@@ -277,7 +277,7 @@ window.__P={"id": "erkek-buyuk-beden-k-kahve-polo-uzun-kollu-tisort", "ad": "Erk
   var sw=document.getElementById('swatches'), sz=document.getElementById('sizes');
   var colName=document.getElementById('colName'), price=document.getElementById('pdpPrice');
   var buy=document.getElementById('buyBtn'), mbuy=document.getElementById('mctaBuy');
-  function money(x){return '₺'+(Math.round(x*100)/100).toLocaleString('tr-TR')}
+  function money(x){return '₺'+Math.round(x).toLocaleString('tr-TR')}
   var mp=document.getElementById('mctaPrice');
   function setPrice(x){price.textContent=money(x);if(mp)mp.textContent=money(x)}
   function setMain(i){var g=P.varyantlar[vi].gorseller;
