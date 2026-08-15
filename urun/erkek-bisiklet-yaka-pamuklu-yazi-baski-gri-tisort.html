@@ -10,6 +10,11 @@
 <meta property="og:description" content="Erkek Bisiklet Yaka Pamuklu Yazı Baskı Gri Tişört. Ürün Kumaş İçeriği %96 Pamuk %4 Elastan.. 1.250 TL üzeri ücretsiz kargo, 14 gün iade. Maccali.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2326221A'/%3E%3Ctext x='32' y='46' font-family='Impact' font-size='40' fill='%23EAE3D3' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9LW8P2Q02K"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments)}
+gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','wait_for_update':500});
+try{if(localStorage.getItem('mc_consent')==='1'){gtag('consent','update',{'analytics_storage':'granted'})}}catch(e){}
+gtag('js',new Date());gtag('config','G-9LW8P2Q02K');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -178,12 +183,15 @@
       </div>
       <div class="foot-col foot-news">
         <h4>Bülten</h4>
-        <p>Yeni ürün ve koleksiyon duyuruları. Reklam yok.</p>
-        <form class="foot-form" data-newsform>
-          <input type="email" placeholder="E-posta" aria-label="E-posta adresi" required>
-          <button type="submit" aria-label="Gönder">→</button>
-        </form>
-        <p class="foot-ok" role="status">Alındı.</p>
+        <p>Yeni ürün ve koleksiyon duyuruları. Ayda birkaç kez, o kadar.</p>
+        <form class="mcf foot-form" method="POST" target="mcf_sink" action="https://docs.google.com/forms/d/e/1FAIpQLSd3HdQ4l77j7pmW2fdk6wDtSnaLLlHMsmwY1F7lMrQ2m9QFYw/formResponse" data-kaynak="bulten" novalidate>
+  <input type="email" name="entry.422902013" placeholder="E-posta" aria-label="E-posta adresi" required autocomplete="email">
+  <input type="hidden" name="entry.1128793108" value="">
+  <input type="text" name="mc_website" tabindex="-1" autocomplete="off" aria-hidden="true" class="mcf-hp">
+  <button type="submit">→</button>
+</form>
+<p class="mcf-msg" role="status" aria-live="polite"></p>
+<p class="mcf-kvkk">Kaydolarak e-postanın yeni ürün duyurusu göndermek için işlenmesine izin vermiş olursun. Başka amaçla kullanılmaz, istediğin zaman çıkabilirsin. <a href="../bilgi-merkezi.html#kvkk">KVKK aydınlatma metni</a></p>
       </div>
     </div>
     <div class="foot-legal">
@@ -198,8 +206,36 @@
     </div>
   </div>
 </footer>
+
+<div class="cbar" id="cbar" role="dialog" aria-live="polite" aria-label="Çerez tercihi" hidden>
+  <p>Siteyi nasıl kullandığını ölçmek için çerez kullanıyoruz. Reklam takibi yok. <a href="../bilgi-merkezi.html#cerez">Çerez politikası</a></p>
+  <div class="cbar-b">
+    <button type="button" data-c="0" class="ghost">Sadece gerekli olanlar</button>
+    <button type="button" data-c="1">Kabul et</button>
+  </div>
+</div>
+
+<iframe name="mcf_sink" title="Form gonderimi" aria-hidden="true" tabindex="-1" style="position:absolute;width:0;height:0;border:0;left:-9999px" src="about:blank"></iframe>
+
 <script>
 (function(){
+  /* cerez bandi: karar verilmemisse goster, karari sakla, kabulde GA4 iznini ac */
+  var cb=document.getElementById('cbar');
+  if(cb){
+    var kayit=null;try{kayit=localStorage.getItem('mc_consent')}catch(e){}
+    if(kayit===null){
+      cb.hidden=false;
+      requestAnimationFrame(function(){requestAnimationFrame(function(){cb.classList.add('in')})});
+    }
+    cb.addEventListener('click',function(e){
+      var b=e.target.closest('button[data-c]');if(!b)return;
+      var ok=b.getAttribute('data-c')==='1';
+      try{localStorage.setItem('mc_consent',ok?'1':'0')}catch(err){}
+      if(ok&&window.gtag){gtag('consent','update',{'analytics_storage':'granted'})}
+      cb.classList.remove('in');
+      setTimeout(function(){cb.hidden=true},450);
+    });
+  }
   /* reveal */
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
   document.querySelectorAll('[data-reveal]').forEach(function(el){io.observe(el)});
@@ -231,15 +267,37 @@
     });
   }
   /* bulten + b2b formlar */
-  document.querySelectorAll('form[data-newsform]').forEach(function(f){
-    f.addEventListener('submit',function(e){e.preventDefault();
-      var ok=f.parentElement.querySelector('.foot-ok');if(ok)ok.style.display='block';
-      f.style.opacity=.45;f.querySelector('button').disabled=true;});
+  /* formlar: gercek gonderim. Gizli iframe'e POST, load olayi basariyi dogruluyor. */
+  document.querySelectorAll('form.mcf').forEach(function(f){
+    var msg=f.parentElement.querySelector('.mcf-msg');
+    var btn=f.querySelector('button');
+    var mail=f.querySelector('input[type=email]');
+    var hp=f.querySelector('input[name=mc_website]');
+    var baglam=f.querySelectorAll('input[type=hidden]')[0];
+    var kaynak=f.getAttribute('data-kaynak')||'';
+    function goster(t,hata){if(!msg)return;msg.textContent=t;msg.className='mcf-msg on'+(hata?' err':'')}
+    f.addEventListener('submit',function(e){
+      if(hp&&hp.value){e.preventDefault();return}               /* bot tuzagi */
+      var v=(mail.value||'').trim();
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        e.preventDefault();goster('E-posta adresini kontrol et.',true);mail.focus();return;
+      }
+      if(baglam){baglam.value=kaynak+' | '+location.pathname+' | riza:evet'}
+      f.classList.add('sending');btn.disabled=true;
+      goster('Gönderiliyor.',false);
+      var bitti=false;
+      var sink=document.querySelector('iframe[name=mcf_sink]');
+      function basarili(){
+        if(bitti)return;bitti=true;
+        goster(kaynak==='toptan'?'Alındı. Katalog bir iş günü içinde e-postanda.':'Alındı. Hoş geldin.',false);
+        f.reset();f.classList.remove('sending');
+        if(window.gtag){gtag('event','generate_lead',{method:kaynak})}
+      }
+      if(sink){sink.addEventListener('load',basarili,{once:true})}
+      /* iframe load gelmezse de kullaniciyi bekletme */
+      setTimeout(basarili,1800);
+    });
   });
-  var b2b=document.getElementById('b2bForm');
-  if(b2b){b2b.addEventListener('submit',function(e){e.preventDefault();
-    document.getElementById('b2bOk').style.display='block';
-    b2b.style.opacity=.45;b2b.querySelector('button').disabled=true;});}
   /* kirik gorsel: ana kapaga, ana basliga ve ana renk isaretine dus */
   document.querySelectorAll('.p-media img, .s-media img').forEach(function(im){
     im.addEventListener('error',function(){
