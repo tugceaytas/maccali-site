@@ -182,6 +182,82 @@ gtag('js',new Date());gtag('config','G-9LW8P2Q02K');</script>
 
 <script>
 (function(){
+  /* ==================== GA4 OLCUM KATMANI ====================
+     Huni: view_item_list -> select_item -> view_item -> begin_checkout
+     begin_checkout, WhatsApp veya Trendyol'a tiklama anidir. Sitede kasa
+     olmadigi icin siparis niyetinin baslangici burasi. Kanal parametresi
+     hangi yoldan gittigini ayirir.
+     Riza yoksa Consent Mode olaylari cerezsiz isler, kod tarafinda ayrica
+     engellemeye gerek yok. gtag yoksa sessizce cikar.               */
+  function ev(ad,par){try{if(window.gtag)gtag('event',ad,par||{})}catch(e){}}
+  window.mcEv=ev;
+  function kartUrun(el,i){
+    var f=parseFloat(el.getAttribute('data-mc-fiyat')||'0');
+    var o={item_id:el.getAttribute('data-mc-id'),item_name:el.getAttribute('data-mc-ad'),
+           item_category:el.getAttribute('data-mc-kat')||undefined,
+           item_variant:el.getAttribute('data-mc-renk')||undefined,
+           item_brand:'Maccali',price:f,currency:'TRY',quantity:1};
+    if(typeof i==='number')o.index=i;
+    return o;
+  }
+  function listeAdi(){
+    var h=document.querySelector('main h1');
+    var p=location.pathname;
+    if(p.indexOf('/kategori/')>-1)return 'kategori: '+(h?h.textContent.trim():'');
+    if(p.indexOf('katalog')>-1)return 'katalog';
+    if(p.indexOf('koleksiyon')>-1)return 'koleksiyon';
+    if(p.indexOf('/urun/')>-1)return 'urun sayfasi onerileri';
+    if(p==='/'||p.indexOf('index')>-1)return 'ana sayfa';
+    return 'diger';
+  }
+  /* view_item_list: liste gorunur olunca bir kez. 30 urunle sinirli (GA4 siniri). */
+  var kartlar=document.querySelectorAll('[data-mc-id]');
+  if(kartlar.length){
+    var gonderildi=false;
+    var lio=new IntersectionObserver(function(es){
+      if(gonderildi)return;
+      for(var i=0;i<es.length;i++){ if(es[i].isIntersecting){
+        gonderildi=true;lio.disconnect();
+        var items=[];
+        for(var k=0;k<kartlar.length&&k<30;k++)items.push(kartUrun(kartlar[k],k));
+        ev('view_item_list',{item_list_name:listeAdi(),items:items});
+        break;
+      }}
+    },{threshold:.2});
+    lio.observe(kartlar[0]);
+    /* select_item: karta tiklama */
+    document.addEventListener('click',function(e){
+      var c=e.target.closest?e.target.closest('[data-mc-id]'):null;
+      if(!c)return;
+      var idx=Array.prototype.indexOf.call(kartlar,c);
+      ev('select_item',{item_list_name:listeAdi(),items:[kartUrun(c,idx>-1?idx:undefined)]});
+    },true);
+  }
+  /* WhatsApp ve Trendyol tiklamalari: her sayfada. Urun sayfasinda PDP_JS
+     zaten urun detayli begin_checkout atiyor, orada tekrarlamiyoruz. */
+  var pdpVar=!!window.__P;
+  document.addEventListener('click',function(e){
+    var a=e.target.closest?e.target.closest('a[href]'):null;
+    if(!a)return;
+    var h=a.getAttribute('href')||'';
+    var kanal=h.indexOf('wa.me')>-1?'whatsapp':(h.indexOf('trendyol.com')>-1?'trendyol':null);
+    if(!kanal)return;
+    if(pdpVar&&a.closest('.pdp,.mcta'))return;              /* PDP kendi olayini atiyor */
+    ev('begin_checkout',{kanal:kanal,currency:'TRY',konum:listeAdi()});
+  },true);
+  /* Arama: overlay oldugu icin GA4'un otomatik site arama olcumu calismaz. */
+  var aramaGirdi=document.querySelector('#searchInput,[data-search-input],.search-overlay input');
+  if(aramaGirdi){
+    var son='',zt=null;
+    aramaGirdi.addEventListener('input',function(){
+      clearTimeout(zt);
+      zt=setTimeout(function(){
+        var q=(aramaGirdi.value||'').trim();
+        if(q.length>2&&q!==son){son=q;ev('search',{search_term:q})}
+      },1200);
+    });
+  }
+
   /* cerez bandi: karar verilmemisse goster, karari sakla, kabulde GA4 iznini ac */
   var cb=document.getElementById('cbar');
   if(cb){
