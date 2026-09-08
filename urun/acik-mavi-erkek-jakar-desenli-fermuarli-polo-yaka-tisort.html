@@ -422,6 +422,33 @@ gtag('js',new Date());gtag('config','G-9LW8P2Q02K');</script>
     document.querySelectorAll('video').forEach(function(v){vio.observe(v)});
   }
 })();
+
+/* --- kart galerisi: hover'da butun kareler doner (dokuman 190) --- */
+(function(){
+  var azHareket = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dokunmatik = window.matchMedia && window.matchMedia('(hover: none)').matches;
+  if (azHareket || dokunmatik) return;
+  document.querySelectorAll('.p-card[data-gal]').forEach(function(k){
+    var gal; try { gal = JSON.parse(k.getAttribute('data-gal')); } catch(e){ return; }
+    if (!gal || gal.length < 2) return;
+    var ust = k.querySelector('.p-media img.alt') || k.querySelector('.p-media img');
+    var noktalar = k.querySelectorAll('.p-sayac i');
+    if (!ust) return;
+    var ilkSrc = ust.getAttribute('src'), t = null, i = 0, yuklendi = false;
+    function isaret(n){ noktalar.forEach(function(d,j){ d.classList.toggle('on', j === n); }); }
+    function onyukle(){ if (yuklendi) return; yuklendi = true;
+      gal.forEach(function(u){ var im = new Image(); im.src = u; }); }
+    function ilerle(){ i = (i + 1) % gal.length; ust.src = gal[i]; isaret(i); }
+    k.addEventListener('mouseenter', function(){
+      onyukle(); i = 0; isaret(0);
+      clearInterval(t); t = setInterval(ilerle, 950);
+    });
+    k.addEventListener('mouseleave', function(){
+      clearInterval(t); t = null; i = 0; isaret(0);
+      if (ilkSrc) ust.src = ilkSrc;
+    });
+  });
+})();
 window.__P={"id": "acik-mavi-erkek-jakar-desenli-fermuarli-polo-yaka-tisort", "ad": "Açık Mavi Erkek Jakar Desenli Fermuarlı Polo Yaka Tişört", "fiyat": 1099.9, "kategori": "Polo Yaka T-shirt", "kalip": "", "olculer": {"kolonlar": ["Beden", "Omuzdan Omuza", "Göğüs", "Boy", "Kol Boyu"], "satirlar": [["M", 45, 52, 74, 22.5], ["L", 47, 54, 76, 23], ["XL", 49, 56, 77, 23.5], ["2XL", 51, 58, 78, 24], ["3XL", 53, 60, 80, 24.5]], "kaynak": "trendyol_beden_tablosu_gorseli", "kaynakGorsel": "https://cdn.dsmcdn.com/ty1914/prod/QC_PREP/20260522/13/692f0990-5b52-32f1-b646-e2bf72b30ce1/1_org_zoom.jpg", "not": "Tabloda kolon başlığı 'Omuzdan Omuzda' olarak basılı."}, "ty": "https://wa.me/905301213842", "varyantlar": [{"renk": "Açık Mavi", "hex": "#a3bcd4", "gorseller": ["../img/urun/acik-mavi-erkek-jakar-desenli-fermuarli-polo-yaka-tisort-model.jpg", "../img/urun/acik-mavi-erkek-jakar-desenli-fermuarli-polo-yaka-tisort-askida.jpg", "../img/urun/acik-mavi-erkek-jakar-desenli-fermuarli-polo-yaka-tisort-kombin.jpg"], "fiyat": 1099.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1099.9}, {"beden": "L", "aktif": true, "fiyat": 1099.9}, {"beden": "XL", "aktif": true, "fiyat": 1099.9}, {"beden": "2XL", "aktif": true, "fiyat": 1099.9}, {"beden": "3XL", "aktif": true, "fiyat": 1099.9}]}, {"renk": "Bej", "hex": "#d5c9b4", "gorseller": ["../img/urun/bej-erkek-jakar-desenli-fermuarli-polo-yaka-tisort-model.jpg", "../img/urun/bej-erkek-jakar-desenli-fermuarli-polo-yaka-tisort-askida.jpg", "../img/urun/bej-erkek-jakar-desenli-fermuarli-polo-yaka-tisort-kombin.jpg"], "fiyat": 1099.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1099.9}, {"beden": "L", "aktif": true, "fiyat": 1099.9}, {"beden": "XL", "aktif": true, "fiyat": 1099.9}, {"beden": "2XL", "aktif": true, "fiyat": 1099.9}, {"beden": "3XL", "aktif": true, "fiyat": 1099.9}]}, {"renk": "Gri", "hex": "#aeaca7", "gorseller": ["../img/urun/gri-erkek-jakar-desenli-fermuarli-polo-yaka-tisort-model.jpg", "../img/urun/gri-erkek-jakar-desenli-fermuarli-polo-yaka-tisort-askida.jpg", "../img/urun/gri-erkek-jakar-desenli-fermuarli-polo-yaka-tisort-kombin.jpg"], "fiyat": 1099.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1099.9}, {"beden": "L", "aktif": true, "fiyat": 1099.9}, {"beden": "XL", "aktif": true, "fiyat": 1099.9}, {"beden": "2XL", "aktif": true, "fiyat": 1099.9}, {"beden": "3XL", "aktif": true, "fiyat": 1099.9}]}, {"renk": "Mavi", "hex": "#5b7ba6", "gorseller": ["https://cdn.maccali.com.tr/site/v1/1212/mavi_1.webp", "https://cdn.maccali.com.tr/site/v1/1212/mavi_3.webp", "https://cdn.maccali.com.tr/site/v1/1212/mavi_7.webp"], "fiyat": 1099.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1099.9}, {"beden": "L", "aktif": true, "fiyat": 1099.9}, {"beden": "XL", "aktif": true, "fiyat": 1099.9}, {"beden": "2XL", "aktif": true, "fiyat": 1099.9}, {"beden": "3XL", "aktif": true, "fiyat": 1099.9}]}, {"renk": "Yeşil", "hex": "#5c7050", "gorseller": ["../img/urun/yesil-erkek-jakar-desenli-fermuarli-polo-yaka-tisort-model.jpg", "../img/urun/yesil-erkek-jakar-desenli-fermuarli-polo-yaka-tisort-askida.jpg", "../img/urun/yesil-erkek-jakar-desenli-fermuarli-polo-yaka-tisort-kombin.jpg"], "fiyat": 1099.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1099.9}, {"beden": "L", "aktif": true, "fiyat": 1099.9}, {"beden": "XL", "aktif": true, "fiyat": 1099.9}, {"beden": "2XL", "aktif": true, "fiyat": 1099.9}, {"beden": "3XL", "aktif": true, "fiyat": 1099.9}]}, {"renk": "Krem", "hex": "#e6dcc3", "gorseller": ["../img/urun/krem-erkek-jakar-desenli-fermuarli-polo-yaka-tisort-model.jpg", "../img/urun/krem-erkek-jakar-desenli-fermuarli-polo-yaka-tisort-askida.jpg", "../img/urun/krem-erkek-jakar-desenli-fermuarli-polo-yaka-tisort-kombin.jpg"], "fiyat": 1099.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1099.9}, {"beden": "L", "aktif": true, "fiyat": 1099.9}, {"beden": "XL", "aktif": true, "fiyat": 1099.9}]}]};
 
   /* --- urun sayfasi olcumu --- */

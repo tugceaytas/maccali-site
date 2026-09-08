@@ -422,6 +422,33 @@ gtag('js',new Date());gtag('config','G-9LW8P2Q02K');</script>
     document.querySelectorAll('video').forEach(function(v){vio.observe(v)});
   }
 })();
+
+/* --- kart galerisi: hover'da butun kareler doner (dokuman 190) --- */
+(function(){
+  var azHareket = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dokunmatik = window.matchMedia && window.matchMedia('(hover: none)').matches;
+  if (azHareket || dokunmatik) return;
+  document.querySelectorAll('.p-card[data-gal]').forEach(function(k){
+    var gal; try { gal = JSON.parse(k.getAttribute('data-gal')); } catch(e){ return; }
+    if (!gal || gal.length < 2) return;
+    var ust = k.querySelector('.p-media img.alt') || k.querySelector('.p-media img');
+    var noktalar = k.querySelectorAll('.p-sayac i');
+    if (!ust) return;
+    var ilkSrc = ust.getAttribute('src'), t = null, i = 0, yuklendi = false;
+    function isaret(n){ noktalar.forEach(function(d,j){ d.classList.toggle('on', j === n); }); }
+    function onyukle(){ if (yuklendi) return; yuklendi = true;
+      gal.forEach(function(u){ var im = new Image(); im.src = u; }); }
+    function ilerle(){ i = (i + 1) % gal.length; ust.src = gal[i]; isaret(i); }
+    k.addEventListener('mouseenter', function(){
+      onyukle(); i = 0; isaret(0);
+      clearInterval(t); t = setInterval(ilerle, 950);
+    });
+    k.addEventListener('mouseleave', function(){
+      clearInterval(t); t = null; i = 0; isaret(0);
+      if (ilkSrc) ust.src = ilkSrc;
+    });
+  });
+})();
 window.__P={"id": "bej-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort", "ad": "Bej Erkek Amblemli Kontrast Biyeli Polo Yaka Tişört", "fiyat": 999.9, "kategori": "Polo Yaka T-shirt", "kalip": "regular", "olculer": {"kolonlar": ["Beden", "Göğüs", "Boy", "Omuz"], "satirlar": [["M", 54, 70, 46], ["L", 56, 72, 48], ["XL", 58, 74, 50], ["2XL", 61, 76, 52], ["3XL", 64, 78, 54]], "genel": true}, "ty": "https://wa.me/905301213842", "varyantlar": [{"renk": "Bej", "hex": "#d5c9b4", "gorseller": ["../img/urun/bej-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-model.jpg", "../img/urun/bej-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-model-2.jpg", "../img/urun/bej-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-yan.jpg", "../img/urun/bej-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-yan-2.jpg", "../img/urun/bej-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-arka.jpg", "../img/urun/bej-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-katli.jpg", "../img/urun/bej-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-kombin.jpg"], "fiyat": 999.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 999.9}, {"beden": "L", "aktif": true, "fiyat": 999.9}, {"beden": "XL", "aktif": true, "fiyat": 999.9}, {"beden": "2XL", "aktif": true, "fiyat": 999.9}, {"beden": "3XL", "aktif": true, "fiyat": 999.9}]}, {"renk": "Beyaz", "hex": "#f2f0ec", "gorseller": ["../img/urun/beyaz-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-yan.jpg", "../img/urun/beyaz-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-arka.jpg", "../img/urun/beyaz-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-askida.jpg", "../img/urun/beyaz-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-katli.jpg", "../img/urun/beyaz-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-kombin.jpg"], "fiyat": 999.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 999.9}, {"beden": "L", "aktif": true, "fiyat": 999.9}, {"beden": "XL", "aktif": true, "fiyat": 999.9}, {"beden": "2XL", "aktif": true, "fiyat": 999.9}, {"beden": "3XL", "aktif": true, "fiyat": 999.9}]}, {"renk": "Kahverengi", "hex": "#6f5540", "gorseller": ["../img/urun/kahverengi-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-model.jpg", "../img/urun/kahverengi-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-yan.jpg", "../img/urun/kahverengi-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-arka.jpg", "../img/urun/kahverengi-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-askida.jpg", "../img/urun/kahverengi-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-kombin.jpg"], "fiyat": 999.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 999.9}, {"beden": "L", "aktif": true, "fiyat": 999.9}, {"beden": "XL", "aktif": true, "fiyat": 999.9}, {"beden": "2XL", "aktif": true, "fiyat": 999.9}, {"beden": "3XL", "aktif": true, "fiyat": 999.9}]}, {"renk": "Lila", "hex": "#a99ab8", "gorseller": ["../img/urun/lila-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-model.jpg", "../img/urun/lila-erkek-amblemli-kontrast-biyeli-polo-yaka-tisort-arka.jpg"], "fiyat": 999.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 999.9}, {"beden": "L", "aktif": true, "fiyat": 999.9}, {"beden": "XL", "aktif": true, "fiyat": 999.9}, {"beden": "2XL", "aktif": true, "fiyat": 999.9}, {"beden": "3XL", "aktif": true, "fiyat": 999.9}]}]};
 
   /* --- urun sayfasi olcumu --- */

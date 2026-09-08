@@ -422,6 +422,33 @@ gtag('js',new Date());gtag('config','G-9LW8P2Q02K');</script>
     document.querySelectorAll('video').forEach(function(v){vio.observe(v)});
   }
 })();
+
+/* --- kart galerisi: hover'da butun kareler doner (dokuman 190) --- */
+(function(){
+  var azHareket = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dokunmatik = window.matchMedia && window.matchMedia('(hover: none)').matches;
+  if (azHareket || dokunmatik) return;
+  document.querySelectorAll('.p-card[data-gal]').forEach(function(k){
+    var gal; try { gal = JSON.parse(k.getAttribute('data-gal')); } catch(e){ return; }
+    if (!gal || gal.length < 2) return;
+    var ust = k.querySelector('.p-media img.alt') || k.querySelector('.p-media img');
+    var noktalar = k.querySelectorAll('.p-sayac i');
+    if (!ust) return;
+    var ilkSrc = ust.getAttribute('src'), t = null, i = 0, yuklendi = false;
+    function isaret(n){ noktalar.forEach(function(d,j){ d.classList.toggle('on', j === n); }); }
+    function onyukle(){ if (yuklendi) return; yuklendi = true;
+      gal.forEach(function(u){ var im = new Image(); im.src = u; }); }
+    function ilerle(){ i = (i + 1) % gal.length; ust.src = gal[i]; isaret(i); }
+    k.addEventListener('mouseenter', function(){
+      onyukle(); i = 0; isaret(0);
+      clearInterval(t); t = setInterval(ilerle, 950);
+    });
+    k.addEventListener('mouseleave', function(){
+      clearInterval(t); t = null; i = 0; isaret(0);
+      if (ilkSrc) ust.src = ilkSrc;
+    });
+  });
+})();
 window.__P={"id": "erkek-buyuk-beden-trend-fermuarli-kahve-sweatshirt", "ad": "Erkek Büyük Beden Trend Fermuarlı Kahve Sweatshirt", "fiyat": 1399.9, "kategori": "Büyük Beden Sweatshirt", "kalip": "", "olculer": {"kolonlar": ["Beden", "Göğüs", "Boy", "Omuz"], "satirlar": [["3XL", 64, 78, 54], ["4XL", 67, 80, 56], ["5XL", 70, 82, 58], ["6XL", 73, 84, 60]], "genel": true}, "ty": "https://wa.me/905301213842", "varyantlar": [{"renk": "Beyaz", "hex": "#f2f0ec", "gorseller": ["https://cdn.dsmcdn.com/ty1814/prod/QC_PREP/20260116/20/c6dc6c16-4cda-310f-9ec8-5f261f4fc596/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1814/prod/QC_PREP/20260116/20/7a1df625-bf79-3cc6-afa5-1a0cfc3e1e1e/1_org_zoom.jpg"], "fiyat": 1399.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "3XL", "aktif": false, "fiyat": 1399.9}, {"beden": "4XL", "aktif": false, "fiyat": 1399.9}, {"beden": "5XL", "aktif": false, "fiyat": 1399.9}, {"beden": "6XL", "aktif": false, "fiyat": 1399.9}]}, {"renk": "Gri", "hex": "#aeaca7", "gorseller": ["https://cdn.dsmcdn.com/ty1812/prod/QC_PREP/20260116/20/bfd6e505-1033-3fb1-98cb-f37a3b0a260b/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1813/prod/QC_PREP/20260116/20/97712c1d-3b13-3d18-b3f2-6cbf978f3e28/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1813/prod/QC_PREP/20260116/20/e1183bed-f9d8-3bce-8480-b98e76a07be3/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1812/prod/QC_PREP/20260116/20/0278654e-39f5-3855-bc4c-50f0288cf522/1_org_zoom.jpg"], "fiyat": 1399.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "3XL", "aktif": false, "fiyat": 1399.9}, {"beden": "4XL", "aktif": false, "fiyat": 1399.9}, {"beden": "5XL", "aktif": false, "fiyat": 1399.9}, {"beden": "6XL", "aktif": false, "fiyat": 1399.9}]}, {"renk": "Haki", "hex": "#6a6142", "gorseller": ["https://cdn.dsmcdn.com/ty1812/prod/QC_PREP/20260116/20/2e8ddf39-6adc-338d-89f6-1a93c2737ed5/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1812/prod/QC_PREP/20260116/20/7649c7a6-c40a-30bb-a7c2-75893e81b33b/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1813/prod/QC_PREP/20260116/20/0cd232fc-2c98-39ac-a918-49b108a3b396/1_org_zoom.jpg"], "fiyat": 1399.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "3XL", "aktif": false, "fiyat": 1399.9}, {"beden": "4XL", "aktif": false, "fiyat": 1399.9}, {"beden": "5XL", "aktif": false, "fiyat": 1399.9}, {"beden": "6XL", "aktif": false, "fiyat": 1399.9}]}, {"renk": "Kahve", "hex": "#6f5540", "gorseller": ["https://cdn.dsmcdn.com/ty1813/prod/QC_PREP/20260116/20/94239778-ffe8-37d9-800a-8179df4c9ec0/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1814/prod/QC_PREP/20260116/20/bbe47446-a4d4-39f2-929b-e657d0b259e7/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1812/prod/QC_PREP/20260116/20/4074982a-0094-3194-8dda-e12d08759227/1_org_zoom.jpg"], "fiyat": 1399.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "3XL", "aktif": false, "fiyat": 1399.9}, {"beden": "4XL", "aktif": false, "fiyat": 1399.9}, {"beden": "5XL", "aktif": true, "fiyat": 1399.9}, {"beden": "6XL", "aktif": false, "fiyat": 1399.9}]}, {"renk": "Krem", "hex": "#e6dcc3", "gorseller": ["https://cdn.dsmcdn.com/ty1813/prod/QC_PREP/20260116/20/2d580830-2f41-3cd7-839f-be5c65fb3e23/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1814/prod/QC_PREP/20260116/20/c324c263-ca42-34c4-ac44-05e07ca2c471/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1812/prod/QC_PREP/20260116/20/bf5dba23-82c6-31e7-b8b8-23b0e0e19541/1_org_zoom.jpg"], "fiyat": 1399.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "3XL", "aktif": true, "fiyat": 1399.9}, {"beden": "4XL", "aktif": false, "fiyat": 1399.9}, {"beden": "5XL", "aktif": true, "fiyat": 1399.9}, {"beden": "6XL", "aktif": false, "fiyat": 1399.9}]}, {"renk": "Lacivert", "hex": "#3d4250", "gorseller": ["https://cdn.dsmcdn.com/ty1812/prod/QC_PREP/20260116/20/5c98a186-353a-36ae-bd58-ba3f5bac5154/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1814/prod/QC_PREP/20260116/20/b283da9a-3d3b-34fd-bc8b-825090f247fe/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1813/prod/QC_PREP/20260116/20/c7fdab6a-427a-331a-81ed-4efd47f36733/1_org_zoom.jpg"], "fiyat": 1399.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "3XL", "aktif": false, "fiyat": 1399.9}, {"beden": "4XL", "aktif": false, "fiyat": 1399.9}, {"beden": "5XL", "aktif": true, "fiyat": 1399.9}, {"beden": "6XL", "aktif": true, "fiyat": 1399.9}]}, {"renk": "Siyah", "hex": "#242424", "gorseller": ["https://cdn.dsmcdn.com/ty1813/prod/QC_PREP/20260116/20/82499369-93ab-3c4c-a1b7-b7d874b154da/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1813/prod/QC_PREP/20260116/20/a7a1a98d-5464-3012-98c8-b36b3b9eda46/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1814/prod/QC_PREP/20260116/20/489fdaab-0df7-3b9c-b671-11d43843a709/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1813/prod/QC_PREP/20260116/20/56f7189c-fc6e-37c9-9f0d-8a8c62cfc4ba/1_org_zoom.jpg"], "fiyat": 1399.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "3XL", "aktif": true, "fiyat": 1399.9}, {"beden": "4XL", "aktif": true, "fiyat": 1399.9}, {"beden": "5XL", "aktif": true, "fiyat": 1399.9}, {"beden": "6XL", "aktif": true, "fiyat": 1399.9}]}]};
 
   /* --- urun sayfasi olcumu --- */

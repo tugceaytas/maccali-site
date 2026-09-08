@@ -422,6 +422,33 @@ gtag('js',new Date());gtag('config','G-9LW8P2Q02K');</script>
     document.querySelectorAll('video').forEach(function(v){vio.observe(v)});
   }
 })();
+
+/* --- kart galerisi: hover'da butun kareler doner (dokuman 190) --- */
+(function(){
+  var azHareket = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dokunmatik = window.matchMedia && window.matchMedia('(hover: none)').matches;
+  if (azHareket || dokunmatik) return;
+  document.querySelectorAll('.p-card[data-gal]').forEach(function(k){
+    var gal; try { gal = JSON.parse(k.getAttribute('data-gal')); } catch(e){ return; }
+    if (!gal || gal.length < 2) return;
+    var ust = k.querySelector('.p-media img.alt') || k.querySelector('.p-media img');
+    var noktalar = k.querySelectorAll('.p-sayac i');
+    if (!ust) return;
+    var ilkSrc = ust.getAttribute('src'), t = null, i = 0, yuklendi = false;
+    function isaret(n){ noktalar.forEach(function(d,j){ d.classList.toggle('on', j === n); }); }
+    function onyukle(){ if (yuklendi) return; yuklendi = true;
+      gal.forEach(function(u){ var im = new Image(); im.src = u; }); }
+    function ilerle(){ i = (i + 1) % gal.length; ust.src = gal[i]; isaret(i); }
+    k.addEventListener('mouseenter', function(){
+      onyukle(); i = 0; isaret(0);
+      clearInterval(t); t = setInterval(ilerle, 950);
+    });
+    k.addEventListener('mouseleave', function(){
+      clearInterval(t); t = null; i = 0; isaret(0);
+      if (ilkSrc) ust.src = ilkSrc;
+    });
+  });
+})();
 window.__P={"id": "acik-gri-erkek-yazi-baskili-bisiklet-yaka-tisort", "ad": "Açık Gri Erkek Yazı Baskılı Bisiklet Yaka Tişört", "fiyat": 1000, "kategori": "T-Shirt", "kalip": "", "olculer": {"kolonlar": ["Beden", "Göğüs", "Boy", "Omuz"], "satirlar": [["M", 54, 70, 46], ["L", 56, 72, 48], ["XL", 58, 74, 50]], "genel": true}, "ty": "https://wa.me/905301213842", "varyantlar": [{"renk": "Açık Gri", "hex": "#c5c3be", "gorseller": ["../img/urun/acik-gri-erkek-yazi-baskili-bisiklet-yaka-tisort-model.jpg", "../img/urun/acik-gri-erkek-yazi-baskili-bisiklet-yaka-tisort-askida.jpg", "../img/urun/acik-gri-erkek-yazi-baskili-bisiklet-yaka-tisort-kombin.jpg"], "fiyat": 1000, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1000}, {"beden": "L", "aktif": true, "fiyat": 1000}, {"beden": "XL", "aktif": true, "fiyat": 1000}]}, {"renk": "Kiremit", "hex": "#b7462a", "gorseller": ["../img/urun/kiremit-erkek-yazi-baskili-bisiklet-yaka-tisort-model.jpg", "../img/urun/kiremit-erkek-yazi-baskili-bisiklet-yaka-tisort-askida.jpg", "../img/urun/kiremit-erkek-yazi-baskili-bisiklet-yaka-tisort-kombin.jpg"], "fiyat": 1000, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1000}, {"beden": "L", "aktif": true, "fiyat": 1000}, {"beden": "XL", "aktif": true, "fiyat": 1000}]}, {"renk": "Koyu Gri", "hex": "#565250", "gorseller": ["../img/urun/koyu-gri-erkek-yazi-baskili-bisiklet-yaka-tisort-model.jpg", "../img/urun/koyu-gri-erkek-yazi-baskili-bisiklet-yaka-tisort-askida.jpg", "../img/urun/koyu-gri-erkek-yazi-baskili-bisiklet-yaka-tisort-kombin.jpg"], "fiyat": 1000, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1000}, {"beden": "L", "aktif": true, "fiyat": 1000}, {"beden": "XL", "aktif": true, "fiyat": 1000}]}, {"renk": "Sarı", "hex": "#d3b552", "gorseller": ["../img/urun/sari-erkek-yazi-baskili-bisiklet-yaka-tisort-model.jpg", "../img/urun/sari-erkek-yazi-baskili-bisiklet-yaka-tisort-askida.jpg", "../img/urun/sari-erkek-yazi-baskili-bisiklet-yaka-tisort-kombin.jpg"], "fiyat": 1000, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1000}, {"beden": "L", "aktif": true, "fiyat": 1000}, {"beden": "XL", "aktif": true, "fiyat": 1000}]}, {"renk": "Turuncu", "hex": "#c8703a", "gorseller": ["../img/urun/turuncu-erkek-yazi-baskili-bisiklet-yaka-tisort-model.jpg", "../img/urun/turuncu-erkek-yazi-baskili-bisiklet-yaka-tisort-askida.jpg", "../img/urun/turuncu-erkek-yazi-baskili-bisiklet-yaka-tisort-kombin.jpg"], "fiyat": 1000, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1000}, {"beden": "L", "aktif": true, "fiyat": 1000}, {"beden": "XL", "aktif": true, "fiyat": 1000}]}]};
 
   /* --- urun sayfasi olcumu --- */

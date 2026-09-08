@@ -530,3 +530,38 @@ footer.site{background:var(--dark);color:var(--dark-text);padding:clamp(50px,8vh
 .p-info{padding:12px 14px 26px}
 .p-info h3{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.9em}
 @media(max-width:900px){.grid-products{grid-template-columns:repeat(2,1fr)}.p-info{padding:11px 12px 22px}}
+
+.p-media{isolation:isolate}
+
+/* renk cipi, karenin icinde sag altta */
+.p-media .dots{position:absolute;right:8px;bottom:8px;z-index:4;display:flex;gap:5px;
+  align-items:center;background:rgba(241,235,221,.94);padding:5px 8px;
+  transition:opacity .25s var(--ease),transform .3s var(--ease)}
+.p-card:hover .p-media .dots{opacity:0;transform:translateY(6px)}
+.p-row .dots{display:none}
+
+/* alttaki ince kare sayaci */
+.p-sayac{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;gap:2px;
+  padding:0 8px 8px;opacity:0;transition:opacity .25s var(--ease)}
+.p-card:hover .p-sayac{opacity:1}
+.p-sayac i{flex:1;height:2px;background:rgba(38,34,26,.22)}
+.p-sayac i.on{background:var(--ink)}
+
+/* beden paneli */
+.p-beden{position:absolute;left:0;right:0;bottom:0;z-index:3;
+  background:rgba(241,235,221,.96);padding:14px 14px 16px;
+  transform:translateY(101%);transition:transform .34s var(--ease)}
+.p-card:hover .p-beden{transform:translateY(0)}
+.p-card:hover .p-sayac{bottom:100%;padding-bottom:6px}
+.p-beden p{margin:0 0 9px;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;
+  font-weight:800;color:var(--ink-soft);text-align:center}
+.p-beden div{display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+.p-beden span{font-size:11.5px;letter-spacing:.06em;padding:5px 9px;border:1px solid var(--line);
+  background:var(--paper2);color:var(--ink);white-space:nowrap}
+.p-beden span.yok{opacity:.32;text-decoration:line-through}
+
+/* dokunmatik cihazda hover yok, panel ve sayac gizli kalir */
+@media(hover:none){
+  .p-beden,.p-sayac{display:none}
+  .p-card:hover .p-media .dots{opacity:1;transform:none}
+}

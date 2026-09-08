@@ -422,6 +422,33 @@ gtag('js',new Date());gtag('config','G-9LW8P2Q02K');</script>
     document.querySelectorAll('video').forEach(function(v){vio.observe(v)});
   }
 })();
+
+/* --- kart galerisi: hover'da butun kareler doner (dokuman 190) --- */
+(function(){
+  var azHareket = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dokunmatik = window.matchMedia && window.matchMedia('(hover: none)').matches;
+  if (azHareket || dokunmatik) return;
+  document.querySelectorAll('.p-card[data-gal]').forEach(function(k){
+    var gal; try { gal = JSON.parse(k.getAttribute('data-gal')); } catch(e){ return; }
+    if (!gal || gal.length < 2) return;
+    var ust = k.querySelector('.p-media img.alt') || k.querySelector('.p-media img');
+    var noktalar = k.querySelectorAll('.p-sayac i');
+    if (!ust) return;
+    var ilkSrc = ust.getAttribute('src'), t = null, i = 0, yuklendi = false;
+    function isaret(n){ noktalar.forEach(function(d,j){ d.classList.toggle('on', j === n); }); }
+    function onyukle(){ if (yuklendi) return; yuklendi = true;
+      gal.forEach(function(u){ var im = new Image(); im.src = u; }); }
+    function ilerle(){ i = (i + 1) % gal.length; ust.src = gal[i]; isaret(i); }
+    k.addEventListener('mouseenter', function(){
+      onyukle(); i = 0; isaret(0);
+      clearInterval(t); t = setInterval(ilerle, 950);
+    });
+    k.addEventListener('mouseleave', function(){
+      clearInterval(t); t = null; i = 0; isaret(0);
+      if (ilkSrc) ust.src = ilkSrc;
+    });
+  });
+})();
 window.__P={"id": "bej-erkek-keten-gorunumlu-jakarli-bermuda-sort", "ad": "Bej Erkek Keten Görünümlü Jakarlı Bermuda Şort", "fiyat": 1349.9, "kategori": "Şort & Bermuda", "kalip": "rahat", "olculer": {"kolonlar": ["Beden", "Bel", "Basen", "Boy"], "satirlar": [["M", 33, 52, 55], ["L", 34, 54, 55], ["XL", 35, 56, 55], ["2XL", 36, 58, 56], ["3XL", 37, 60, 56]], "kaynak": "musteri_el_yazisi_tablosu_20260907", "kaynakGorsel": "Tugce 7 Eylul 2026 el yazisi sort olcu tablosu (Bel/Basen/Boy)", "belLastikli": true}, "ty": "https://wa.me/905301213842", "varyantlar": [{"renk": "Bej", "hex": "#d5c9b4", "gorseller": ["../img/1242/bej_1.webp", "../img/1242/bej_2.webp", "../img/1242/bej_3.webp", "../img/1242/bej_4.webp", "../img/1242/bej_5.webp", "../img/1242/bej_6.webp", "../img/urun/bej-erkek-keten-gorunumlu-jakarli-bermuda-sort-kombin.jpg"], "fiyat": 1349.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1349.9}, {"beden": "L", "aktif": true, "fiyat": 1349.9}, {"beden": "XL", "aktif": true, "fiyat": 1349.9}, {"beden": "2XL", "aktif": true, "fiyat": 1349.9}, {"beden": "3XL", "aktif": true, "fiyat": 1349.9}]}, {"renk": "Açık Mavi", "hex": "#a3bcd4", "gorseller": ["../img/urun/acik-mavi-erkek-keten-gorunumlu-jakarli-bermuda-sort-model.jpg", "../img/urun/acik-mavi-erkek-keten-gorunumlu-jakarli-bermuda-sort-askida.jpg", "../img/urun/acik-mavi-erkek-keten-gorunumlu-jakarli-bermuda-sort-kombin.jpg"], "fiyat": 1349.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1349.9}, {"beden": "L", "aktif": true, "fiyat": 1349.9}, {"beden": "XL", "aktif": true, "fiyat": 1349.9}, {"beden": "2XL", "aktif": true, "fiyat": 1349.9}, {"beden": "3XL", "aktif": true, "fiyat": 1349.9}]}, {"renk": "Gri", "hex": "#aeaca7", "gorseller": ["../img/1242/gri_1.webp", "../img/1242/gri_2.webp", "../img/1242/gri_3.webp", "../img/1242/gri_5.webp", "../img/urun/gri-erkek-keten-gorunumlu-jakarli-bermuda-sort-kombin.jpg"], "fiyat": 1349.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1349.9}, {"beden": "L", "aktif": true, "fiyat": 1349.9}, {"beden": "XL", "aktif": true, "fiyat": 1349.9}, {"beden": "2XL", "aktif": true, "fiyat": 1349.9}, {"beden": "3XL", "aktif": true, "fiyat": 1349.9}]}, {"renk": "Mavi", "hex": "#5b7ba6", "gorseller": ["../img/1242/mavi_1.webp", "../img/1242/mavi_2.webp", "../img/1242/mavi_3.webp", "../img/1242/mavi_5.webp", "../img/urun/mavi-erkek-keten-gorunumlu-jakarli-bermuda-sort-kombin.jpg"], "fiyat": 1349.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1349.9}, {"beden": "L", "aktif": true, "fiyat": 1349.9}, {"beden": "XL", "aktif": true, "fiyat": 1349.9}, {"beden": "2XL", "aktif": true, "fiyat": 1349.9}, {"beden": "3XL", "aktif": true, "fiyat": 1349.9}]}, {"renk": "Yeşil", "hex": "#5c7050", "gorseller": ["../img/1242/yesil_1.webp", "../img/1242/yesil_2.webp", "../img/1242/yesil_3.webp", "../img/1242/yesil_4.webp", "../img/1242/yesil_5.webp", "../img/urun/yesil-erkek-keten-gorunumlu-jakarli-bermuda-sort-kombin.jpg"], "fiyat": 1349.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1349.9}, {"beden": "L", "aktif": true, "fiyat": 1349.9}, {"beden": "XL", "aktif": true, "fiyat": 1349.9}, {"beden": "2XL", "aktif": true, "fiyat": 1349.9}, {"beden": "3XL", "aktif": true, "fiyat": 1349.9}]}]};
 
   /* --- urun sayfasi olcumu --- */

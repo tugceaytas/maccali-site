@@ -422,6 +422,33 @@ gtag('js',new Date());gtag('config','G-9LW8P2Q02K');</script>
     document.querySelectorAll('video').forEach(function(v){vio.observe(v)});
   }
 })();
+
+/* --- kart galerisi: hover'da butun kareler doner (dokuman 190) --- */
+(function(){
+  var azHareket = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dokunmatik = window.matchMedia && window.matchMedia('(hover: none)').matches;
+  if (azHareket || dokunmatik) return;
+  document.querySelectorAll('.p-card[data-gal]').forEach(function(k){
+    var gal; try { gal = JSON.parse(k.getAttribute('data-gal')); } catch(e){ return; }
+    if (!gal || gal.length < 2) return;
+    var ust = k.querySelector('.p-media img.alt') || k.querySelector('.p-media img');
+    var noktalar = k.querySelectorAll('.p-sayac i');
+    if (!ust) return;
+    var ilkSrc = ust.getAttribute('src'), t = null, i = 0, yuklendi = false;
+    function isaret(n){ noktalar.forEach(function(d,j){ d.classList.toggle('on', j === n); }); }
+    function onyukle(){ if (yuklendi) return; yuklendi = true;
+      gal.forEach(function(u){ var im = new Image(); im.src = u; }); }
+    function ilerle(){ i = (i + 1) % gal.length; ust.src = gal[i]; isaret(i); }
+    k.addEventListener('mouseenter', function(){
+      onyukle(); i = 0; isaret(0);
+      clearInterval(t); t = setInterval(ilerle, 950);
+    });
+    k.addEventListener('mouseleave', function(){
+      clearInterval(t); t = null; i = 0; isaret(0);
+      if (ilkSrc) ust.src = ilkSrc;
+    });
+  });
+})();
 window.__P={"id": "erkek-uzun-kollu-dik-yaka-bordo-fermuarli-sweatshirt", "ad": "Erkek Uzun Kollu Dik Yaka Bordo Fermuarlı Sweatshirt", "fiyat": 1699.9, "kategori": "Sweatshirt", "kalip": "", "olculer": {"kolonlar": ["Beden", "Omuzdan Omuza", "Göğüs", "Boy", "Kol Boyu"], "satirlar": [["M", 45, 52, 70, 66], ["L", 47, 54, 72, 66], ["XL", 49, 56, 74, 67], ["XXL", 51, 58, 76, 67]], "kaynak": "trendyol_beden_tablosu_gorseli", "kaynakGorsel": "https://cdn.dsmcdn.com/ty1779/prod/QC_PREP/20251025/22/9e6aefc1-fd20-363c-b233-adb0e720f21f/1_org_zoom.jpg", "not": "Tabloda beden XXL olarak basili, urun listesinde 2XL"}, "ty": "https://wa.me/905301213842", "varyantlar": [{"renk": "Bordo", "hex": "#772525", "gorseller": ["https://cdn.dsmcdn.com/ty1781/prod/QC_PREP/20251025/22/a60199cb-6876-34ce-baaf-8875006f4e48/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1780/prod/QC_PREP/20251025/22/87e66a06-62bf-3863-93a5-c0498e4e5bac/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1781/prod/QC_PREP/20251025/22/2c98dda6-721f-3930-a385-99cb3e15f139/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1779/prod/QC_PREP/20251025/22/d574ca35-4209-30ab-b14e-7785c480b131/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1779/prod/QC_PREP/20251025/22/a4762320-5d8b-3726-981e-e0410bddbe04/1_org_zoom.jpg"], "fiyat": 1699.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1699.9}, {"beden": "L", "aktif": true, "fiyat": 1699.9}, {"beden": "XL", "aktif": true, "fiyat": 1699.9}, {"beden": "2XL", "aktif": true, "fiyat": 1699.9}]}, {"renk": "Haki", "hex": "#6a6142", "gorseller": ["https://cdn.dsmcdn.com/ty1781/prod/QC_PREP/20251025/22/a10bf77d-5a50-339e-8579-95bca503f10c/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1780/prod/QC_PREP/20251025/22/2a55bec0-6d20-39ac-a436-314244955488/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1780/prod/QC_PREP/20251025/22/f35ebee0-f7cd-37e6-8b7b-6b4744f91d22/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1781/prod/QC_PREP/20251025/22/f446b869-a6db-3575-b44a-5d449ebbd1db/1_org_zoom.jpg"], "fiyat": 1699.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1699.9}, {"beden": "L", "aktif": true, "fiyat": 1699.9}, {"beden": "XL", "aktif": true, "fiyat": 1699.9}, {"beden": "2XL", "aktif": true, "fiyat": 1699.9}]}, {"renk": "Lacivert", "hex": "#3d4250", "gorseller": ["https://cdn.dsmcdn.com/ty1781/prod/QC_PREP/20251025/13/fae7a8ef-68e5-3e75-9e29-d2f8fb336b15/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1780/prod/QC_PREP/20251025/13/a908e606-1b72-3546-9cd2-c0fcd4b67e48/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1779/prod/QC_PREP/20251025/13/41cf3c9e-8ddd-3eeb-9b02-8e25e7ee82fe/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1779/prod/QC_PREP/20251025/13/5c6e8645-073e-34cd-a23a-0fe402272d9c/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1781/prod/QC_PREP/20251025/13/9fdb0bea-6ce7-31f6-8a5e-41cb11627610/1_org_zoom.jpg"], "fiyat": 1699.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1699.9}, {"beden": "L", "aktif": true, "fiyat": 1699.9}, {"beden": "XL", "aktif": true, "fiyat": 1699.9}, {"beden": "2XL", "aktif": true, "fiyat": 1699.9}]}, {"renk": "Siyah", "hex": "#242424", "gorseller": ["https://cdn.dsmcdn.com/ty1780/prod/QC_PREP/20251025/13/97c83998-e4e0-3ab3-b90c-6f6fbc3f49d0/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1780/prod/QC_PREP/20251025/13/f6321983-e6a0-3448-a4b4-e751d4254ab7/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1781/prod/QC_PREP/20251025/13/a749bc80-3601-334d-a10d-d03a6f29e34a/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1781/prod/QC_PREP/20251025/13/c84784f3-8513-30bb-bf01-6d531488e41c/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1780/prod/QC_PREP/20251025/13/b5027e34-2779-3350-ab83-5801a8f34194/1_org_zoom.jpg"], "fiyat": 1699.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1699.9}, {"beden": "L", "aktif": true, "fiyat": 1699.9}, {"beden": "XL", "aktif": true, "fiyat": 1699.9}, {"beden": "2XL", "aktif": true, "fiyat": 1699.9}]}]};
 
   /* --- urun sayfasi olcumu --- */

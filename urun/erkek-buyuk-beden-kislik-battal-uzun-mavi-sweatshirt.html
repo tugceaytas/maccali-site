@@ -422,6 +422,33 @@ gtag('js',new Date());gtag('config','G-9LW8P2Q02K');</script>
     document.querySelectorAll('video').forEach(function(v){vio.observe(v)});
   }
 })();
+
+/* --- kart galerisi: hover'da butun kareler doner (dokuman 190) --- */
+(function(){
+  var azHareket = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dokunmatik = window.matchMedia && window.matchMedia('(hover: none)').matches;
+  if (azHareket || dokunmatik) return;
+  document.querySelectorAll('.p-card[data-gal]').forEach(function(k){
+    var gal; try { gal = JSON.parse(k.getAttribute('data-gal')); } catch(e){ return; }
+    if (!gal || gal.length < 2) return;
+    var ust = k.querySelector('.p-media img.alt') || k.querySelector('.p-media img');
+    var noktalar = k.querySelectorAll('.p-sayac i');
+    if (!ust) return;
+    var ilkSrc = ust.getAttribute('src'), t = null, i = 0, yuklendi = false;
+    function isaret(n){ noktalar.forEach(function(d,j){ d.classList.toggle('on', j === n); }); }
+    function onyukle(){ if (yuklendi) return; yuklendi = true;
+      gal.forEach(function(u){ var im = new Image(); im.src = u; }); }
+    function ilerle(){ i = (i + 1) % gal.length; ust.src = gal[i]; isaret(i); }
+    k.addEventListener('mouseenter', function(){
+      onyukle(); i = 0; isaret(0);
+      clearInterval(t); t = setInterval(ilerle, 950);
+    });
+    k.addEventListener('mouseleave', function(){
+      clearInterval(t); t = null; i = 0; isaret(0);
+      if (ilkSrc) ust.src = ilkSrc;
+    });
+  });
+})();
 window.__P={"id": "erkek-buyuk-beden-kislik-battal-uzun-mavi-sweatshirt", "ad": "Erkek Büyük Beden Kışlık Battal Uzun Mavi Sweatshirt", "fiyat": 0, "kategori": "Büyük Beden Sweatshirt", "kalip": "", "olculer": {"kolonlar": ["Beden", "Göğüs", "Boy", "Omuz"], "satirlar": [["2XL", 61, 76, 52], ["3XL", 64, 78, 54], ["4XL", 67, 80, 56], ["5XL", 70, 82, 58]], "genel": true}, "ty": "https://wa.me/905301213842", "varyantlar": [{"renk": "Mavi", "hex": "#5b7ba6", "gorseller": ["https://cdn.dsmcdn.com/ty1606/prod/QC/20241126/15/68ea208a-7566-3819-9463-6c278adb1370/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1605/prod/QC/20241126/15/da346b6e-d3ec-3b49-940a-94534f2d0c2a/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1606/prod/QC/20241126/15/614a485b-6d65-3139-bbbf-8167c58d1e63/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1607/prod/QC/20241126/15/5122d17f-1dfa-3a3a-9e29-0e9a57d93628/1_org_zoom.jpg", "https://cdn.dsmcdn.com/ty1605/prod/QC/20241126/15/04429540-33c0-36ed-9f46-64fa2d7cc07b/1_org_zoom.jpg"], "fiyat": 0, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "2XL", "aktif": false, "fiyat": 0}, {"beden": "3XL", "aktif": false, "fiyat": 0}, {"beden": "4XL", "aktif": false, "fiyat": 0}, {"beden": "5XL", "aktif": false, "fiyat": 0}]}]};
 
   /* --- urun sayfasi olcumu --- */

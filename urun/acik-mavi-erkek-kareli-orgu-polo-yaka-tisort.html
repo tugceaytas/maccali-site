@@ -422,6 +422,33 @@ gtag('js',new Date());gtag('config','G-9LW8P2Q02K');</script>
     document.querySelectorAll('video').forEach(function(v){vio.observe(v)});
   }
 })();
+
+/* --- kart galerisi: hover'da butun kareler doner (dokuman 190) --- */
+(function(){
+  var azHareket = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dokunmatik = window.matchMedia && window.matchMedia('(hover: none)').matches;
+  if (azHareket || dokunmatik) return;
+  document.querySelectorAll('.p-card[data-gal]').forEach(function(k){
+    var gal; try { gal = JSON.parse(k.getAttribute('data-gal')); } catch(e){ return; }
+    if (!gal || gal.length < 2) return;
+    var ust = k.querySelector('.p-media img.alt') || k.querySelector('.p-media img');
+    var noktalar = k.querySelectorAll('.p-sayac i');
+    if (!ust) return;
+    var ilkSrc = ust.getAttribute('src'), t = null, i = 0, yuklendi = false;
+    function isaret(n){ noktalar.forEach(function(d,j){ d.classList.toggle('on', j === n); }); }
+    function onyukle(){ if (yuklendi) return; yuklendi = true;
+      gal.forEach(function(u){ var im = new Image(); im.src = u; }); }
+    function ilerle(){ i = (i + 1) % gal.length; ust.src = gal[i]; isaret(i); }
+    k.addEventListener('mouseenter', function(){
+      onyukle(); i = 0; isaret(0);
+      clearInterval(t); t = setInterval(ilerle, 950);
+    });
+    k.addEventListener('mouseleave', function(){
+      clearInterval(t); t = null; i = 0; isaret(0);
+      if (ilkSrc) ust.src = ilkSrc;
+    });
+  });
+})();
 window.__P={"id": "acik-mavi-erkek-kareli-orgu-polo-yaka-tisort", "ad": "Açık Mavi Erkek Kareli Örgü Polo Yaka Tişört", "fiyat": 1299.9, "kategori": "Polo Yaka T-shirt", "kalip": "", "olculer": {"kolonlar": ["Beden", "Omuzdan Omuza", "Göğüs", "Boy", "Kol Boyu"], "satirlar": [["M", 45, 52, 74, 22.5], ["L", 47, 54, 76, 23], ["XL", 49, 56, 77, 23.5], ["2XL", 51, 58, 78, 24], ["3XL", 53, 60, 80, 24.5]], "kaynak": "trendyol_beden_tablosu_gorseli", "kaynakGorsel": "https://cdn.dsmcdn.com/ty1836/prod/QC_PREP/20260311/23/7e844985-b287-3159-bd01-1ef4e8073012/1_org_zoom.jpg"}, "ty": "https://wa.me/905301213842", "varyantlar": [{"renk": "Açık Mavi", "hex": "#a3bcd4", "gorseller": ["../img/urun/acik-mavi-erkek-kareli-orgu-polo-yaka-tisort-model.jpg", "../img/urun/acik-mavi-erkek-kareli-orgu-polo-yaka-tisort-askida.jpg", "../img/urun/acik-mavi-erkek-kareli-orgu-polo-yaka-tisort-kombin.jpg"], "fiyat": 1299.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": false, "fiyat": 1299.9}, {"beden": "L", "aktif": true, "fiyat": 1299.9}, {"beden": "XL", "aktif": true, "fiyat": 1299.9}, {"beden": "2XL", "aktif": true, "fiyat": 1299.9}, {"beden": "3XL", "aktif": true, "fiyat": 1299.9}]}, {"renk": "Bej", "hex": "#d5c9b4", "gorseller": ["../img/urun/bej-erkek-kareli-orgu-polo-yaka-tisort-model.jpg", "../img/urun/bej-erkek-kareli-orgu-polo-yaka-tisort-askida.jpg", "../img/urun/bej-erkek-kareli-orgu-polo-yaka-tisort-kombin.jpg"], "fiyat": 1299.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1299.9}, {"beden": "L", "aktif": true, "fiyat": 1299.9}, {"beden": "XL", "aktif": true, "fiyat": 1299.9}, {"beden": "2XL", "aktif": true, "fiyat": 1299.9}, {"beden": "3XL", "aktif": true, "fiyat": 1299.9}]}, {"renk": "Gri", "hex": "#aeaca7", "gorseller": ["../img/urun/gri-erkek-kareli-orgu-polo-yaka-tisort-model.jpg", "../img/urun/gri-erkek-kareli-orgu-polo-yaka-tisort-askida.jpg", "../img/urun/gri-erkek-kareli-orgu-polo-yaka-tisort-kombin.jpg"], "fiyat": 1299.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1299.9}, {"beden": "L", "aktif": true, "fiyat": 1299.9}, {"beden": "XL", "aktif": true, "fiyat": 1299.9}, {"beden": "2XL", "aktif": true, "fiyat": 1299.9}, {"beden": "3XL", "aktif": true, "fiyat": 1299.9}]}, {"renk": "Mavi", "hex": "#5b7ba6", "gorseller": ["../img/urun/mavi-erkek-kareli-orgu-polo-yaka-tisort-model.jpg", "../img/urun/mavi-erkek-kareli-orgu-polo-yaka-tisort-askida.jpg", "../img/urun/mavi-erkek-kareli-orgu-polo-yaka-tisort-kombin.jpg"], "fiyat": 1299.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": false, "fiyat": 1299.9}, {"beden": "L", "aktif": true, "fiyat": 1299.9}, {"beden": "XL", "aktif": true, "fiyat": 1299.9}, {"beden": "2XL", "aktif": true, "fiyat": 1299.9}, {"beden": "3XL", "aktif": true, "fiyat": 1299.9}]}, {"renk": "Yeşil", "hex": "#5c7050", "gorseller": ["../img/urun/yesil-erkek-kareli-orgu-polo-yaka-tisort-model.jpg", "../img/urun/yesil-erkek-kareli-orgu-polo-yaka-tisort-askida.jpg", "../img/urun/yesil-erkek-kareli-orgu-polo-yaka-tisort-kombin.jpg"], "fiyat": 1299.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1299.9}, {"beden": "L", "aktif": true, "fiyat": 1299.9}, {"beden": "XL", "aktif": false, "fiyat": 1299.9}, {"beden": "2XL", "aktif": true, "fiyat": 1299.9}, {"beden": "3XL", "aktif": true, "fiyat": 1299.9}]}, {"renk": "Krem", "hex": "#e6dcc3", "gorseller": ["../img/urun/krem-erkek-kareli-orgu-polo-yaka-tisort-model.jpg", "../img/urun/krem-erkek-kareli-orgu-polo-yaka-tisort-askida.jpg", "../img/urun/krem-erkek-kareli-orgu-polo-yaka-tisort-kombin.jpg", "../img/urun/krem-erkek-kareli-orgu-polo-yaka-tisort-detay-1.jpg", "../img/urun/krem-erkek-kareli-orgu-polo-yaka-tisort-detay-2.jpg", "../img/urun/krem-erkek-kareli-orgu-polo-yaka-tisort-detay-3.jpg", "../img/urun/krem-erkek-kareli-orgu-polo-yaka-tisort-detay-4.jpg"], "fiyat": 1299.9, "ty": "https://wa.me/905301213842", "bedenler": [{"beden": "M", "aktif": true, "fiyat": 1299.9}, {"beden": "L", "aktif": true, "fiyat": 1299.9}, {"beden": "XL", "aktif": true, "fiyat": 1299.9}]}]};
 
   /* --- urun sayfasi olcumu --- */
