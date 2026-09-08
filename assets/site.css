@@ -533,12 +533,8 @@ footer.site{background:var(--dark);color:var(--dark-text);padding:clamp(50px,8vh
 
 .p-media{isolation:isolate}
 
-/* renk cipi, karenin icinde sag altta */
-.p-media .dots{position:absolute;right:8px;bottom:8px;z-index:4;display:flex;gap:5px;
-  align-items:center;background:rgba(241,235,221,.94);padding:5px 8px;
-  transition:opacity .25s var(--ease),transform .3s var(--ease)}
-.p-card:hover .p-media .dots{opacity:0;transform:translateY(6px)}
-.p-row .dots{display:none}
+/* Renk noktalari karenin DISINDA, fiyatin karsisinda kalir. Beden paneli acilinca
+   kaybolmamalari icin karenin icine alinmadi (Tugce, 8 Eylul). */
 
 /* alttaki ince kare sayaci */
 .p-sayac{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;gap:2px;
@@ -563,5 +559,4 @@ footer.site{background:var(--dark);color:var(--dark-text);padding:clamp(50px,8vh
 /* dokunmatik cihazda hover yok, panel ve sayac gizli kalir */
 @media(hover:none){
   .p-beden,.p-sayac{display:none}
-  .p-card:hover .p-media .dots{opacity:1;transform:none}
 }
