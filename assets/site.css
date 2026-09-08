@@ -560,3 +560,5 @@ footer.site{background:var(--dark);color:var(--dark-text);padding:clamp(50px,8vh
 @media(hover:none){
   .p-beden,.p-sayac{display:none}
 }
+.pdp-tukendi{margin:10px 0 0;padding:11px 14px;background:var(--paper-deep);
+  border-left:2px solid var(--clay);font-size:13.5px;line-height:1.6;color:var(--ink)}
