@@ -518,30 +518,10 @@ footer.site{background:var(--dark);color:var(--dark-text);padding:clamp(50px,8vh
 .mcf-kvkk{margin:8px 0 0;font-size:11.5px;line-height:1.6;opacity:.62;max-width:44ch}
 .mcf-kvkk a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 
-/* ============================================================
-   M&S standardı, kart ve grid (8 Eylül 2026, doküman 183)
-   Tek oran, boşluksuz tam kanama grid, hizalı başlık.
-   Geri almak için bu bloğu sil.
-   ============================================================ */
-.grid-products{
-  gap:2px;
-  width:100vw;
-  max-width:100vw;
-  margin-left:calc(50% - 50vw);
-  margin-right:calc(50% - 50vw);
-}
+.grid-products{gap:2px;width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
 .p-media{aspect-ratio:10/13}
 .p-media img{object-position:50% 6%}
 .p-card:hover .p-media img.solo{transform:none}
 .p-info{padding:12px 14px 26px}
-.p-info h3{
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-  min-height:2.9em;
-}
-@media(max-width:900px){
-  .grid-products{grid-template-columns:repeat(2,1fr)}
-  .p-info{padding:11px 12px 22px}
-}
+.p-info h3{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.9em}
+@media(max-width:900px){.grid-products{grid-template-columns:repeat(2,1fr)}.p-info{padding:11px 12px 22px}}
