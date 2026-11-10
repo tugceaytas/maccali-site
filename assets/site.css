@@ -562,3 +562,40 @@ footer.site{background:var(--dark);color:var(--dark-text);padding:clamp(50px,8vh
 }
 .pdp-tukendi{margin:10px 0 0;padding:11px 14px;background:var(--paper-deep);
   border-left:2px solid var(--clay);font-size:13.5px;line-height:1.6;color:var(--ink)}
+
+/* ============ 11.11 kampanya katmani (assets/kampanya-1111.js ile acilir) ============ */
+:root{--k:#A63E24;--k-soft:#E9C9B8}
+.k-tb{display:none}
+.k1111 .topbar{background:var(--k)}
+.k1111 .topbar .wrap{justify-content:center;flex-wrap:wrap}
+.k1111 .topbar .wrap>span{display:none}
+.k1111 .k-tb{display:inline-flex;align-items:center;gap:10px;color:#fff;font-size:11px}
+.k1111 .k-tb b{font-family:var(--disp);font-weight:400;font-size:15px;letter-spacing:.06em;line-height:1}
+.k1111 .k-tb i{font-style:normal;opacity:.6}
+.k1111 .k-tb .k-tb-cd{font-variant-numeric:tabular-nums;letter-spacing:.1em}
+.k1111 .k-tb:hover span{text-decoration:underline;text-underline-offset:3px}
+
+.k-band{background:var(--ink);color:var(--paper);position:relative;overflow:hidden;border-bottom:4px solid var(--k)}
+.k-band-in{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(20px,4vw,64px);padding-top:clamp(28px,4vw,48px);padding-bottom:clamp(28px,4vw,48px)}
+.k-num{font-family:var(--disp);font-size:clamp(84px,13vw,210px);line-height:.82;letter-spacing:-.01em;color:var(--k)}
+.k-txt{max-width:560px}
+.k-eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--k-soft);margin-bottom:10px}
+.k-txt h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.6vw,38px);line-height:1.12;margin-bottom:12px}
+.k-txt p{color:rgba(234,227,211,.75);font-size:14.5px}
+.k-ctas{display:flex;align-items:center;gap:22px;margin-top:20px}
+.k-btn{background:var(--k);color:#fff;padding:13px 26px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;transition:background .3s var(--ease)}
+.k-btn:hover{background:#8E3420}
+.k-lk{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:3px}
+.k-cd{display:flex;gap:10px}
+.k-cd div{min-width:84px;border:1px solid rgba(234,227,211,.25);padding:14px 10px 10px;text-align:center}
+.k-cd b{display:block;font-family:var(--disp);font-weight:400;font-size:clamp(34px,3.6vw,52px);line-height:1;font-variant-numeric:tabular-nums}
+.k-cd span{display:block;margin-top:8px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(234,227,211,.6)}
+@media(max-width:1000px){.k-band-in{grid-template-columns:1fr;gap:18px}.k-num{font-size:clamp(84px,26vw,150px)}.k-cd div{min-width:0;flex:1}}
+
+.k-chip{position:absolute;left:10px;bottom:10px;z-index:3;background:var(--k);color:#fff;font-family:var(--disp);font-size:13px;letter-spacing:.06em;line-height:1;padding:5px 7px 4px;pointer-events:none}
+.k-sp{display:block;margin-top:3px;font-size:12px;font-weight:600;color:var(--k)}
+.k-sp b{font-weight:800}
+.k-pdp{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin:8px 0 4px;padding:10px 12px;border:1px solid var(--k);color:var(--k);font-size:14px}
+.k-pdp b{font-family:var(--disp);font-weight:400;font-size:17px;letter-spacing:.05em;background:var(--k);color:#fff;padding:3px 6px 2px;line-height:1}
+.k-pdp strong{font-size:18px;font-weight:800}
+.k-pdp span{flex-basis:100%;font-size:12px;color:var(--ink-soft)}
